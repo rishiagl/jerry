@@ -8,6 +8,7 @@ public class DatabaseConnection {
     public static Connection Connector() {
         if(conn == null) {
             try {
+                Class.forName("org.sqlite.JDBC");
                 return conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\rishi\\github.com\\rishiagl\\jerry\\src\\main\\resources\\jerry.db");
             } catch (Exception e) {
                 System.out.println(e);
