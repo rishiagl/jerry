@@ -1,5 +1,7 @@
-package com.github.rishiagl.jerry;
+package com.github.rishiagl.jerry.Controllers;
 
+import com.github.rishiagl.jerry.Product;
+import com.github.rishiagl.jerry.ProductDAO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

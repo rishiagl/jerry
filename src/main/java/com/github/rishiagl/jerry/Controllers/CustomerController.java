@@ -1,5 +1,7 @@
-package com.github.rishiagl.jerry;
+package com.github.rishiagl.jerry.Controllers;
 
+import com.github.rishiagl.jerry.Customer;
+import com.github.rishiagl.jerry.CustomerDAO;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

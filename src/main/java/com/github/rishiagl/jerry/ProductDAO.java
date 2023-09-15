@@ -20,7 +20,9 @@ public class ProductDAO implements DAO<Product, ProductProperty>{
             Connection conn = DatabaseConnection.Connector();
             Statement st = conn.createStatement();
             st.execute(query);
-            return 1;
+            ResultSet rs = st.executeQuery("SELECT last_insert_rowid()");
+            rs.next();
+            return rs.getInt((1));
 
         } catch (Exception exp) {
             System.out.println(exp);
