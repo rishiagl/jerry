@@ -1,5 +1,6 @@
 package com.github.rishiagl.jerry;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,8 +9,22 @@ import java.util.List;
 
 public class CustomerDAO implements DAO<Customer, CustomerProperty>{
     @Override
-    public long addOne(Customer e) throws SQLException {
-        return 0;
+    public long addOne(Customer cus) throws SQLException {
+        try {
+            String query = "INSERT INTO customer(phone_no, name, address) VALUES ('"
+                    + cus.getPhone_no() + "', '"
+                    + cus.getName() + "', '"
+                    + cus.getAddress()
+                    + "');";
+            Connection conn = DatabaseConnection.Connector();
+            Statement st = conn.createStatement();
+            st.execute(query);
+            return 1;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return 0;
+        }
     }
 
     @Override
@@ -45,7 +60,7 @@ public class CustomerDAO implements DAO<Customer, CustomerProperty>{
     }
 
     @Override
-    public List<Customer> getByProperty(CustomerProperty p, Object value) throws SQLException {
+    public ArrayList<Customer> getByProperty(CustomerProperty p, Object value) throws SQLException {
         return null;
     }
 }

@@ -27,11 +27,16 @@ public class CustomerController {
             return null;
         }
     }
-//    @PostMapping( value = "",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
-//    )
-//    public ResponseEntity<Customer> addOne(@RequestBody Customer customer) {
-//        arr.add(customer);
-//        return new ResponseEntity<>(customer, HttpStatus.OK);
-//    }
+    @PostMapping( value = "",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public ResponseEntity<Customer> addOne(@RequestBody Customer customer) {
+        CustomerDAO dao = new CustomerDAO();
+        try {
+            dao.addOne(customer);
+        } catch (SQLException e) {
+
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
 }
