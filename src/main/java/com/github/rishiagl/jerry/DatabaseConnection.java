@@ -2,6 +2,7 @@ package com.github.rishiagl.jerry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseConnection {
     private static Connection conn = null;
@@ -16,5 +17,13 @@ public class DatabaseConnection {
             }
         }
         else return conn;
+    }
+
+    public static void Close() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

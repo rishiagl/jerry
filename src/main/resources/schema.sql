@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS invoice (
 );
 INSERT INTO invoice(date_created, customer_name, customer_id) VALUES('2023-09-16', 'RIshi Agarwal', 1);
 
-DROP TABLE invoice_itme_list CASCADE;
+DROP TABLE invoice_item_list CASCADE;
 CREATE TABLE IF NOT EXISTS invoice_item_list (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     invoice_id INTEGER NOT NULL,
