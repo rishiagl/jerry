@@ -41,3 +41,30 @@ CREATE TABLE IF NOT EXISTS invoice_item_list (
     FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE RESTRICT
 );
 INSERT INTO invoice_item_list(invoice_id, product_id, qty, rate) VALUES(1, 1, 2, 5000);
+
+DROP TABLE company CASCADE;
+CREATE TABLE IF NOT EXISTS company (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    legal_name TEXT NOT NULL,
+    address TEXT NOT NULL,
+    gstn  TEXT NOT NULL UNIQUE,
+    phone_no TEXT NOT NULL,
+    email TEXT NOT NULL,
+    website TEXT NOT NULL,
+    owner_email TEXT NOT NULL UNIQUE
+);
+INSERT INTO company(name, legal_name, address, gstn, phone_no, email, website, owner_email) VALUES('My Choice Electronics', 'My Choice', 'Sakchi, Jamshedpur, Jharkhand, India - 831001', '20AEYPA0067P1ZB', '9334638328', 'mychoice_jamshedpur@rediffmail.com', 'www.mychoiceelectronics.com', 'mychoiceeletronics01@gmail.com');
+INSERT INTO company(name, legal_name, address, gstn, phone_no, email, website, owner_email) VALUES('Synergy Limited', 'Synergy Limited', 'Bistupur, Jamshedpur, Jharkhand, India - 831001', '20AHDVA0067P1ZB', '7979888545', 'synergylimited@gmail.com', 'www.synergylimited.com', 'rishi58235@gmail.com');
+
+DROP TABLE company_users CASCADE;
+CREATE TABLE IF NOT EXISTS company_users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    company_id INTEGER NOT NULL,
+    company_name TEXT NOT NULL,
+    user_email TEXT NOT NULL,
+    FOREIGN KEY(company_id) REFERENCES company(id) ON DELETE RESTRICT,
+    FOREIGN KEY(company_name) REFERENCES company(name) ON DELETE RESTRICT
+);
+INSERT INTO company_users(company_id, company_name, user_email) VALUES(1, 'My Choice', 'mychoiceelectronics01@gmail.com');
+INSERT INTO company_users(company_id, company_name, user_email) VALUES(2, 'Synergy Limited', 'rishi58235@gmail.com');
